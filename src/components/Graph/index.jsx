@@ -43,10 +43,7 @@ const GraphConfig = {
     emptyEdgeWithoutWeight: {
       // required to show empty edges
       shapeId: '#emptyEdgeWithoutWeight',
-      shape: (
-        <symbol viewBox="0 0 50 50" id="emptyEdgeWithoutWeight" key="0">
-        </symbol>
-      ),
+      shape: <symbol viewBox="0 0 50 50" id="emptyEdgeWithoutWeight" key="0"></symbol>,
     },
   },
 };

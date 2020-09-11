@@ -21,20 +21,20 @@ export const addRouteToNodesArray = (nodesArray, route) => {
 export const getAllRoutes = (routes, nodes, source, dest) => {
   const adjacencyList = new Map();
 
-  nodes.forEach(node => adjacencyList.set(node.title, []));
-  routes.forEach(route => {
+  nodes.forEach((node) => adjacencyList.set(node.title, []));
+  routes.forEach((route) => {
     const weight = Number(route.substring(2));
     adjacencyList.get(route[0]).push({ dest: route[1], weight });
   });
 
-  console.log("AdjacencyList", adjacencyList);
+  console.log('AdjacencyList', adjacencyList);
   var allRoutes = [];
   var visited = new Set();
   var path = [];
   path.push(source);
-  
-  function findAllPaths(v1, v2, visited, path, first=false, count) {
-    if(!first && v1 == v2) {
+
+  function findAllPaths(v1, v2, visited, path, first = false, count) {
+    if (!first && v1 == v2) {
       console.log(`${path} with Count: ${count}`);
       const pathString = path.join();
       allRoutes.push(pathString);
@@ -43,8 +43,8 @@ export const getAllRoutes = (routes, nodes, source, dest) => {
     visited.add(v1);
     var destinations = adjacencyList.get(v1);
     for (var destObj of destinations) {
-      const {dest, weight} = destObj;
-      if (!visited.has(dest) || dest === v2){
+      const { dest, weight } = destObj;
+      if (!visited.has(dest) || dest === v2) {
         path.push(dest);
         count = count + weight;
         findAllPaths(dest, v2, visited, path, false, count);
@@ -56,6 +56,6 @@ export const getAllRoutes = (routes, nodes, source, dest) => {
   }
 
   findAllPaths(source, dest, visited, path, true, 0);
-  const allRoutesArray = allRoutes.map(route => route.split(','));
+  const allRoutesArray = allRoutes.map((route) => route.split(','));
   return allRoutesArray;
-}
+};
