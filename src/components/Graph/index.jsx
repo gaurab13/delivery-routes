@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { GraphView } from 'react-digraph';
-import { store } from "../../Context";
+import { store } from '../../Context';
 
 const GraphConfig = {
   NodeTypes: {
@@ -42,21 +42,21 @@ const GraphConfig = {
 };
 
 const Graph = () => {
-  const {state} = useContext(store);
+  const { state } = useContext(store);
   const { nodes, edges } = state;
 
   const NodeTypes = GraphConfig.NodeTypes;
   const EdgeTypes = GraphConfig.EdgeTypes;
 
   const handleNodeSelect = (node) => {
-    if(node) {
+    if (node) {
       console.log(node);
     }
-  }
+  };
 
   return (
     <GraphView
-      nodeKey={"id"}
+      nodeKey={'id'}
       nodes={nodes}
       edges={edges}
       nodeTypes={NodeTypes}
@@ -67,4 +67,3 @@ const Graph = () => {
   );
 };
 export default Graph;
-

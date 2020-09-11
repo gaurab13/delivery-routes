@@ -1,7 +1,7 @@
-import React, {createContext, useReducer} from 'react';
+import React, { createContext, useReducer } from 'react';
 
 const initialState = {
-  routes: ["AB1", "AC4", "AD10", "BE3", "CD4", "CF2", "DE1", "EB3", "EA2", "FD1"], 
+  routes: ['AB1', 'AC4', 'AD10', 'BE3', 'CD4', 'CF2', 'DE1', 'EB3', 'EA2', 'FD1'],
   nodes: [
     {
       id: 1,
@@ -75,21 +75,21 @@ const initialState = {
       handleText: 5,
     },
   ],
-}
+};
 
 const store = createContext(initialState);
 const { Provider } = store;
 
-const StateProvider = ( { children } ) => {
+const StateProvider = ({ children }) => {
   const [state, dispatch] = useReducer((state, action) => {
-    const {type, payload} = action;
-    switch(type) {
+    const { type, payload } = action;
+    switch (type) {
       default:
-        return initialState
-    };
+        return initialState;
+    }
   }, initialState);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 
-export { store, StateProvider }
+export { store, StateProvider };
