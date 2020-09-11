@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import RouteForm from '../RoutesForm';
 import './index.scss';
 
 const Tabs = () => {
@@ -24,7 +25,9 @@ const Tabs = () => {
         </li>
       </ul>
       <div className="tab-content">
-        <div className={`tab-pane ${activeTab === 'tab1' ? 'active' : ''}`}>Tab Content Home</div>
+        <div className={`tab-pane ${activeTab === 'tab1' ? 'active' : ''}`}>
+          <RouteForm />
+        </div>
         <div className={`tab-pane ${activeTab === 'tab2' ? 'active' : ''}`}>Tab Content 1</div>
         <div className={`tab-pane ${activeTab === 'tab3' ? 'active' : ''}`}>Tab Content 2</div>
       </div>

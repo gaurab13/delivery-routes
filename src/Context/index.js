@@ -1,4 +1,5 @@
 import React, { createContext, useReducer } from 'react';
+import { addRouteToNodesArray } from '../Utils';
 
 const initialState = {
   routes: ['AB1', 'AC4', 'AD10', 'BE3', 'CD4', 'CF2', 'DE1', 'EB3', 'EA2', 'FD1'],
@@ -22,6 +23,23 @@ const StateProvider = ({ children }) => {
         return {
           ...state,
           edges: payload,
+        };
+      case 'UPDATE_SINGLE_NODE':
+        const updatedArray = state.nodes.map((node) => {
+          if (node.id === payload.id) return payload;
+          return node;
+        });
+        return {
+          ...state,
+          nodes: updatedArray,
+        };
+      case 'ADD_SINGLE_NODE':
+        const newNodesArray = [...state.nodes];
+        addRouteToNodesArray(newNodesArray, payload);
+        return {
+          ...state,
+          nodes: newNodesArray,
+          routes: [...state.routes, payload],
         };
       default:
         return initialState;

@@ -86,7 +86,7 @@ const Graph = () => {
 
   const handleNodeSelect = (node) => {
     if (node) {
-      console.log(node);
+      dispatch({ type: 'UPDATE_SINGLE_NODE', payload: node });
     }
   };
 
