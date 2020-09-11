@@ -1,38 +1,40 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import CaseOne from '../CaseOne';
 import RouteForm from '../RoutesForm';
+import { store } from '../../Context';
 import './index.scss';
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState('tab2');
+  const { state, dispatch } = useContext(store);
+  const activeTab = state.activeTab;
 
   return (
     <div className="tabs">
       <ul className="nav nav-tabs" role="tablist">
-        <li className={`nav-item ${activeTab === 'tab1' ? 'active' : ''}`}>
-          <button className="nav-link" onClick={() => setActiveTab('tab1')}>
+        <li className={`nav-item ${activeTab === 'routes-tab' ? 'active' : ''}`}>
+          <button className="nav-link" onClick={() => dispatch({type: 'SET_ACTIVE_TAB', payload: 'routes-tab' })}>
             Routes
           </button>
         </li>
-        <li className={`nav-item ${activeTab === 'tab2' ? 'active' : ''}`}>
-          <button className="nav-link" onClick={() => setActiveTab('tab2')}>
+        <li className={`nav-item ${activeTab === 'case-one-tab' ? 'active' : ''}`}>
+          <button className="nav-link" onClick={() => dispatch({type: 'SET_ACTIVE_TAB', payload: 'case-one-tab' })}>
             Case 1
           </button>
         </li>
-        <li className={`nav-item ${activeTab === 'tab3' ? 'active' : ''}`}>
-          <button className="nav-link" onClick={() => setActiveTab('tab3')}>
+        <li className={`nav-item ${activeTab === 'case-two-tab' ? 'active' : ''}`}>
+          <button className="nav-link" onClick={() => dispatch({type: 'SET_ACTIVE_TAB', payload: 'case-two-tab' })}>
             Case 2
           </button>
         </li>
       </ul>
       <div className="tab-content">
-        <div className={`tab-pane ${activeTab === 'tab1' ? 'active' : ''}`}>
+        <div className={`tab-pane ${activeTab === 'routes-tab' ? 'active' : ''}`}>
           <RouteForm />
         </div>
-        <div className={`tab-pane ${activeTab === 'tab2' ? 'active' : ''}`}>
+        <div className={`tab-pane ${activeTab === 'case-one-tab' ? 'active' : ''}`}>
           <CaseOne />
         </div>
-        <div className={`tab-pane ${activeTab === 'tab3' ? 'active' : ''}`}>Tab Content 2</div>
+        <div className={`tab-pane ${activeTab === 'case-two-tab' ? 'active' : ''}`}>Tab Content 2</div>
       </div>
     </div>
   );

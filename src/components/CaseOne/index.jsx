@@ -12,6 +12,8 @@ const CaseOne = () => {
   useEffect(() => {
     if (routeInput.length >= 3) {
       calculateCost();
+    } else {
+      dispatch({ type: 'UPDATE_CASE1_ROUTES', payload: [] });
     }
   }, [routeInput]);
 

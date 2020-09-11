@@ -6,6 +6,7 @@ const initialState = {
   nodes: [],
   edges: [],
   caseOneRoutes: [],
+  activeTab: 'routes-tab',
 };
 
 const store = createContext(initialState);
@@ -47,6 +48,11 @@ const StateProvider = ({ children }) => {
           ...state,
           caseOneRoutes: payload,
         };
+      case 'SET_ACTIVE_TAB':
+        return {
+          ...state,
+          activeTab: payload,
+        }
       default:
         return initialState;
     }
