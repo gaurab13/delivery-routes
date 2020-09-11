@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { GraphView } from 'react-digraph';
 
 const GraphConfig = {
@@ -39,48 +39,6 @@ const GraphConfig = {
     },
   },
 };
-const NODE_KEY = 'id'; // Allows D3 to correctly update DOM
-
-export default class Graph extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      graph: sample,
-      selected: {},
-    };
-  }
-  /* Define custom graph editing methods here */
-
-  render() {
-    const nodes = sample.nodes;
-    const edges = sample.edges;
-    const selected = this.state.selected;
-
-    const NodeTypes = GraphConfig.NodeTypes;
-    const NodeSubtypes = GraphConfig.NodeSubtypes;
-    const EdgeTypes = GraphConfig.EdgeTypes;
-
-    return (
-      <GraphView
-        nodeKey={NODE_KEY}
-        nodes={nodes}
-        edges={edges}
-        selected={selected}
-        nodeTypes={NodeTypes}
-        nodeSubtypes={NodeSubtypes}
-        edgeTypes={EdgeTypes}
-        onSelectNode={this.onSelectNode}
-        onUpdateNode={this.onUpdateNode}
-        onSelectEdge={this.onSelectEdge}
-        onCreateNode={this.onCreateNode}
-        onDeleteNode={this.onDeleteNode}
-        onSwapEdge={this.onSwapEdge}
-      />
-    );
-  }
-}
-
 const sample = {
   nodes: [
     {
@@ -156,3 +114,28 @@ const sample = {
     },
   ],
 };
+
+const Graph = () => {
+  const NodeTypes = GraphConfig.NodeTypes;
+  const EdgeTypes = GraphConfig.EdgeTypes;
+
+  const handleNodeSelect = (node) => {
+    if(node) {
+      console.log(node);
+    }
+  }
+
+  return (
+    <GraphView
+      nodeKey={"id"}
+      nodes={sample.nodes}
+      edges={sample.edges}
+      nodeTypes={NodeTypes}
+      nodeSubtypes={{}}
+      edgeTypes={EdgeTypes}
+      onSelectNode={handleNodeSelect}
+    />
+  );
+};
+export default Graph;
+

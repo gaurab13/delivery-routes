@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import GraphView from './components/GraphView';
+import Graph from './components/Graph';
 import Tabs from './components/Tabs';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <div className="app-container">
       <div className="d-flex">
         <div className="graph-container p-2">
-          <GraphView />
+          <Graph />
         </div>
         <div className="tabs-container p-2">
           <Tabs />
