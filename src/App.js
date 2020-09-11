@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
-import Graph from './components/Graph';
-import Tabs from './components/Tabs';
+import Graph from './Components/Graph';
+import Tabs from './Components/Tabs';
 
 function App() {
   return (
