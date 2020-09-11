@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import CaseOne from '../CaseOne';
 import RouteForm from '../RoutesForm';
 import './index.scss';
 
 const Tabs = () => {
-  const [activeTab, setActiveTab] = useState('tab1');
+  const [activeTab, setActiveTab] = useState('tab2');
 
   return (
     <div className="tabs">
@@ -28,7 +29,9 @@ const Tabs = () => {
         <div className={`tab-pane ${activeTab === 'tab1' ? 'active' : ''}`}>
           <RouteForm />
         </div>
-        <div className={`tab-pane ${activeTab === 'tab2' ? 'active' : ''}`}>Tab Content 1</div>
+        <div className={`tab-pane ${activeTab === 'tab2' ? 'active' : ''}`}>
+          <CaseOne />
+        </div>
         <div className={`tab-pane ${activeTab === 'tab3' ? 'active' : ''}`}>Tab Content 2</div>
       </div>
     </div>

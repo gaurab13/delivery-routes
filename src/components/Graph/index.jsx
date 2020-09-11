@@ -45,7 +45,7 @@ const GraphConfig = {
 
 const Graph = () => {
   const { state, dispatch } = useContext(store);
-  const { nodes, edges, routes } = state;
+  const { nodes, edges, routes, caseOneRoutes } = state;
 
   const NodeTypes = GraphConfig.NodeTypes;
   const EdgeTypes = GraphConfig.EdgeTypes;
@@ -63,7 +63,7 @@ const Graph = () => {
   };
 
   const getEdgesFromRoute = () => {
-    return routes.map((route) => {
+    return caseOneRoutes.map((route) => {
       const weight = Number(route.substring(2));
       return {
         source: getIdFromTitle(route[0]),
@@ -82,7 +82,7 @@ const Graph = () => {
     if (nodes.length) {
       dispatch({ type: 'UPDATE_EDGES', payload: getEdgesFromRoute() });
     }
-  }, [nodes.length, routes.length]);
+  }, [nodes.length, routes.length, caseOneRoutes]);
 
   const handleNodeSelect = (node) => {
     if (node) {

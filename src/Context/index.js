@@ -5,6 +5,7 @@ const initialState = {
   routes: ['AB1', 'AC4', 'AD10', 'BE3', 'CD4', 'CF2', 'DE1', 'EB3', 'EA2', 'FD1'],
   nodes: [],
   edges: [],
+  caseOneRoutes: [],
 };
 
 const store = createContext(initialState);
@@ -40,6 +41,11 @@ const StateProvider = ({ children }) => {
           ...state,
           nodes: newNodesArray,
           routes: [...state.routes, payload],
+        };
+      case 'UPDATE_CASE1_ROUTES':
+        return {
+          ...state,
+          caseOneRoutes: payload,
         };
       default:
         return initialState;
