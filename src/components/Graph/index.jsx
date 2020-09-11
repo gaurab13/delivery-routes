@@ -70,7 +70,7 @@ const Graph = () => {
     if (activeTab === 'case-one-tab') {
       return caseOneRoutes;
     }
-  }
+  };
 
   const getEdgesFromRoute = () => {
     const activeRoute = getActiveRoute();

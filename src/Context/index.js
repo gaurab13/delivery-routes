@@ -52,7 +52,7 @@ const StateProvider = ({ children }) => {
         return {
           ...state,
           activeTab: payload,
-        }
+        };
       default:
         return initialState;
     }

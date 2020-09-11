@@ -12,17 +12,26 @@ const Tabs = () => {
     <div className="tabs">
       <ul className="nav nav-tabs" role="tablist">
         <li className={`nav-item ${activeTab === 'routes-tab' ? 'active' : ''}`}>
-          <button className="nav-link" onClick={() => dispatch({type: 'SET_ACTIVE_TAB', payload: 'routes-tab' })}>
+          <button
+            className="nav-link"
+            onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', payload: 'routes-tab' })}
+          >
             Routes
           </button>
         </li>
         <li className={`nav-item ${activeTab === 'case-one-tab' ? 'active' : ''}`}>
-          <button className="nav-link" onClick={() => dispatch({type: 'SET_ACTIVE_TAB', payload: 'case-one-tab' })}>
+          <button
+            className="nav-link"
+            onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', payload: 'case-one-tab' })}
+          >
             Case 1
           </button>
         </li>
         <li className={`nav-item ${activeTab === 'case-two-tab' ? 'active' : ''}`}>
-          <button className="nav-link" onClick={() => dispatch({type: 'SET_ACTIVE_TAB', payload: 'case-two-tab' })}>
+          <button
+            className="nav-link"
+            onClick={() => dispatch({ type: 'SET_ACTIVE_TAB', payload: 'case-two-tab' })}
+          >
             Case 2
           </button>
         </li>
@@ -34,7 +43,9 @@ const Tabs = () => {
         <div className={`tab-pane ${activeTab === 'case-one-tab' ? 'active' : ''}`}>
           <CaseOne />
         </div>
-        <div className={`tab-pane ${activeTab === 'case-two-tab' ? 'active' : ''}`}>Tab Content 2</div>
+        <div className={`tab-pane ${activeTab === 'case-two-tab' ? 'active' : ''}`}>
+          Tab Content 2
+        </div>
       </div>
     </div>
   );
