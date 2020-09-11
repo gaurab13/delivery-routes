@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { GraphView } from 'react-digraph';
 import { store } from '../../Context';
+
+import { addRouteToNodesArray } from '../../Utils';
 
 const GraphConfig = {
   NodeTypes: {
@@ -42,11 +44,45 @@ const GraphConfig = {
 };
 
 const Graph = () => {
-  const { state } = useContext(store);
-  const { nodes, edges } = state;
+  const { state, dispatch } = useContext(store);
+  const { nodes, edges, routes } = state;
 
   const NodeTypes = GraphConfig.NodeTypes;
   const EdgeTypes = GraphConfig.EdgeTypes;
+
+  const getNodesFromRoute = () => {
+    var nodesArray = [];
+    routes.forEach((route) => {
+      addRouteToNodesArray(nodesArray, route);
+    });
+    return nodesArray;
+  };
+
+  const getIdFromTitle = (title) => {
+    return nodes.find((node) => node.title === title).id;
+  };
+
+  const getEdgesFromRoute = () => {
+    return routes.map((route) => {
+      const weight = Number(route.substring(2));
+      return {
+        source: getIdFromTitle(route[0]),
+        target: getIdFromTitle(route[1]),
+        type: 'edgeWithWeight',
+        handleText: weight,
+      };
+    });
+  };
+
+  useEffect(() => {
+    dispatch({ type: 'UPDATE_NODES', payload: getNodesFromRoute() });
+  }, []);
+
+  useEffect(() => {
+    if (nodes.length) {
+      dispatch({ type: 'UPDATE_EDGES', payload: getEdgesFromRoute() });
+    }
+  }, [nodes.length, routes.length]);
 
   const handleNodeSelect = (node) => {
     if (node) {
