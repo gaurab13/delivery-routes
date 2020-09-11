@@ -3,6 +3,7 @@ import CaseOne from '../CaseOne';
 import RouteForm from '../RoutesForm';
 import { store } from '../../Context';
 import './index.scss';
+import CaseTwo from '../CaseTwo';
 
 const Tabs = () => {
   const { state, dispatch } = useContext(store);
@@ -44,7 +45,7 @@ const Tabs = () => {
           <CaseOne />
         </div>
         <div className={`tab-pane ${activeTab === 'case-two-tab' ? 'active' : ''}`}>
-          Tab Content 2
+          <CaseTwo />
         </div>
       </div>
     </div>

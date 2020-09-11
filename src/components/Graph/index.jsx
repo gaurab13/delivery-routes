@@ -29,14 +29,22 @@ const GraphConfig = {
   },
   NodeSubtypes: {},
   EdgeTypes: {
-    emptyEdge: {
+    emptyEdgeWithWeight: {
       // required to show empty edges
-      shapeId: '#emptyEdge',
+      shapeId: '#emptyEdgeWithWeight',
       shape: (
-        <symbol viewBox="0 0 50 50" id="emptyEdge" key="0">
+        <symbol viewBox="0 0 50 50" id="emptyEdgeWithWeight" key="0">
           <circle cx="25" cy="25" r="10" fill="currentColor">
             {' '}
           </circle>
+        </symbol>
+      ),
+    },
+    emptyEdgeWithoutWeight: {
+      // required to show empty edges
+      shapeId: '#emptyEdgeWithoutWeight',
+      shape: (
+        <symbol viewBox="0 0 50 50" id="emptyEdgeWithoutWeight" key="0">
         </symbol>
       ),
     },
@@ -45,8 +53,7 @@ const GraphConfig = {
 
 const Graph = () => {
   const { state, dispatch } = useContext(store);
-  const { nodes, edges, routes, caseOneRoutes, activeTab } = state;
-  console.log(state);
+  const { nodes, edges, routes, caseOneRoutes, activeTab, caseTwoRoutes } = state;
 
   const NodeTypes = GraphConfig.NodeTypes;
   const EdgeTypes = GraphConfig.EdgeTypes;
@@ -70,6 +77,7 @@ const Graph = () => {
     if (activeTab === 'case-one-tab') {
       return caseOneRoutes;
     }
+    return caseTwoRoutes;
   };
 
   const getEdgesFromRoute = () => {
@@ -79,8 +87,8 @@ const Graph = () => {
       return {
         source: getIdFromTitle(route[0]),
         target: getIdFromTitle(route[1]),
-        type: 'edgeWithWeight',
-        handleText: weight,
+        type: activeTab === 'case-two-tab' ? 'emptyEdgeWithoutWeight' : 'emptyEdgeWithWeight',
+        handleText: weight ? weight : null,
       };
     });
   };
@@ -93,7 +101,7 @@ const Graph = () => {
     if (nodes.length) {
       dispatch({ type: 'UPDATE_EDGES', payload: getEdgesFromRoute() });
     }
-  }, [nodes.length, routes.length, caseOneRoutes, activeTab]);
+  }, [nodes.length, routes.length, caseOneRoutes, activeTab, caseTwoRoutes]);
 
   const handleNodeSelect = (node) => {
     if (node) {

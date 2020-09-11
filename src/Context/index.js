@@ -6,7 +6,8 @@ const initialState = {
   nodes: [],
   edges: [],
   caseOneRoutes: [],
-  activeTab: 'routes-tab',
+  caseTwoRoutes: [],
+  activeTab: 'case-two-tab',
 };
 
 const store = createContext(initialState);
@@ -47,6 +48,11 @@ const StateProvider = ({ children }) => {
         return {
           ...state,
           caseOneRoutes: payload,
+        };
+      case 'UPDATE_CASE2_ROUTES':
+        return {
+          ...state,
+          caseTwoRoutes: payload,
         };
       case 'SET_ACTIVE_TAB':
         return {
