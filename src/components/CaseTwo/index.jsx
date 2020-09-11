@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { store } from '../../Context';
 import { getAllRoutes } from '../../Utils';
+import "./index.scss";
 
 const CaseTwo = () => {
   const { state, dispatch } = useContext(store);
@@ -9,6 +10,7 @@ const CaseTwo = () => {
   const [sourceInput, setSourceInput] = useState("");
   const [destInput, setDestInput] = useState("");
   const [maxStops, setMaxStops] = useState(5);
+  const [routesCount, setRoutesCount] = useState(0);
 
   const getValidRoutes = (routes) => {
     console.log(maxStops);
@@ -20,23 +22,31 @@ const CaseTwo = () => {
 
   const findAllRoutes = () => {
     const allRoutes = getAllRoutes(routes, nodes, sourceInput, destInput);
-    console.log("All", allRoutes);
     const validRoutes = getValidRoutes(allRoutes);
-    console.log("Valid", validRoutes);
     const formattedSet = new Set();
-    validRoutes.map(route => {
-      for(var i=0; i < route.length -1; i++) {
-        formattedSet.add(`${route[i]}${route[i+1]}`);
-      }
-    });
-    console.log(formattedSet);
-    dispatch({type: 'UPDATE_CASE2_ROUTES', payload: Array.from(formattedSet)});
+    if (validRoutes.length) {
+      validRoutes.map(route => {
+        for(var i=0; i < route.length -1; i++) {
+          formattedSet.add(`${route[i]}${route[i+1]}`);
+        }
+      });
+      dispatch({type: 'UPDATE_CASE2_ROUTES', payload: Array.from(formattedSet)});
+    } else {
+      dispatch({type: 'UPDATE_CASE2_ROUTES', payload: []});
+    }
+    setRoutesCount(validRoutes.length);
+  }
+
+  const handleClick = () => {
+    if (sourceInput.length === 1 && destInput.length === 1) {
+      findAllRoutes();
+    }
   }
 
   return (
     <div className="case-two-container">
       <div className="d-flex">
-        <div className="form-group mr-4">
+        <div className="form-group mr-2">
           <label htmlFor="sourceInput">Source</label>
           <input
             type="text"
@@ -67,11 +77,15 @@ const CaseTwo = () => {
           value={maxStops}
         />
       </div>
-      <div className="form-group">
-        <button className="btn btn-primary" onClick={findAllRoutes}>
-          Find
-        </button>
-      </div>
+        <div className="d-flex flex-column">
+          <div>Number of Delivery Routes</div>
+          <div className="d-flex justify-content-between">
+            <div className="routes-count-output">{routesCount}</div>
+            <button className="btn btn-primary" onClick={handleClick}>
+              Find
+            </button>
+          </div>
+        </div>
     </div>
   )
 }
