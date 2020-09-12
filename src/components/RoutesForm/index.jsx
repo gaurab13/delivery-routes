@@ -14,8 +14,8 @@ const RouteForm = () => {
   };
 
   const routeExists = () => {
-    return routes.some(route => route.substring(0,2) === routeInput.substring(0,2));
-  }
+    return routes.some((route) => route.substring(0, 2) === routeInput.substring(0, 2));
+  };
 
   const handleClick = () => {
     if (/^([A-Z][A-Z])\d$/.test(routeInput) && routeInput[0] !== routeInput[1] && !routeExists()) {
@@ -38,11 +38,11 @@ const RouteForm = () => {
         <label htmlFor="route-input">New Route</label>
         <input
           type="text"
-          className={`form-control ${inputError ? 'error' : ''}`} 
+          className={`form-control ${inputError ? 'error' : ''}`}
           id="route-input"
           onChange={handleChange}
           value={routeInput}
-          autoComplete={"off"}
+          autoComplete={'off'}
         />
         <small id="route-input-help" className="form-text text-muted">
           It should be of appropriate format like AB1

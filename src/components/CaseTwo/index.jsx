@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { store } from '../../Context';
 import { getAllRoutes } from '../../Utils';
 import './index.scss';
-import {DEFAULT_MAX_STOPS} from '../../Constants';
+import { DEFAULT_MAX_STOPS } from '../../Constants';
 
 const CaseTwo = () => {
   const { state, dispatch } = useContext(store);
@@ -61,7 +61,7 @@ const CaseTwo = () => {
             id="sourceInput"
             onChange={(evt) => setSourceInput(evt.target.value)}
             value={sourceInput}
-            autoComplete={"off"}
+            autoComplete={'off'}
           />
         </div>
         <div className="form-group">
@@ -72,7 +72,7 @@ const CaseTwo = () => {
             id="destInput"
             onChange={(evt) => setDestInput(evt.target.value)}
             value={destInput}
-            autoComplete={"off"}
+            autoComplete={'off'}
           />
         </div>
       </div>

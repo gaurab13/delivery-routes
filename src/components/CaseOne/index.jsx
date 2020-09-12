@@ -51,7 +51,9 @@ const CaseOne = () => {
       <div className="d-flex flex-column">
         <div className="case-info">
           <h5>Delivery Cost</h5>
-          <p>Delivery cost for a route is the sum of cost of all individual paths within that route.</p>
+          <p>
+            Delivery cost for a route is the sum of cost of all individual paths within that route.
+          </p>
         </div>
         <div className="form-group mr-2">
           <label htmlFor="routeInput">Enter Delivery Route</label>
@@ -61,7 +63,7 @@ const CaseOne = () => {
             id="routeInput"
             onChange={(evt) => setRouteInput(evt.target.value)}
             value={routeInput}
-            autoComplete={"off"}
+            autoComplete={'off'}
           />
           <small id="route-input-help" className="form-text text-muted">
             It should be of appropriate format like A-B-C with towns separated by hyphen.
