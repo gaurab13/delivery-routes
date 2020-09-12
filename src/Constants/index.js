@@ -26,3 +26,5 @@ export const DEFAULT_POSITIONS = [
     "y": 300,
   }
 ]
+
+export const DEFAULT_MAX_STOPS = 5;

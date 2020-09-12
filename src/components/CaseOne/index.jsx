@@ -10,10 +10,11 @@ const CaseOne = () => {
   const [deliveryCost, setDeliveryCost] = useState(0);
 
   useEffect(() => {
-    if (routeInput.length >= 3) {
+    if (/^(A-B)(-[A-Z])*$/.test(routeInput)) {
       calculateCost();
     } else {
       dispatch({ type: 'UPDATE_CASE1_ROUTES', payload: [] });
+      setDeliveryCost('-');
     }
   }, [routeInput]);
 
@@ -39,9 +40,6 @@ const CaseOne = () => {
   };
 
   const getDeliveryCostOutput = () => {
-    if (routeInput.length < 3) {
-      return '-';
-    }
     if (!deliveryCost) {
       return 'No Such Routes';
     }
@@ -63,6 +61,7 @@ const CaseOne = () => {
             id="routeInput"
             onChange={(evt) => setRouteInput(evt.target.value)}
             value={routeInput}
+            autoComplete={"off"}
           />
           <small id="route-input-help" className="form-text text-muted">
             It should be of appropriate format like A-B-C with towns separated by hyphen.

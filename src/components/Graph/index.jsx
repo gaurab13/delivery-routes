@@ -51,7 +51,6 @@ const GraphConfig = {
 const Graph = () => {
   const { state, dispatch } = useContext(store);
   const { nodes, edges, routes, caseOneRoutes, activeTab, caseTwoRoutes } = state;
-  console.log(nodes);
   const NodeTypes = GraphConfig.NodeTypes;
   const EdgeTypes = GraphConfig.EdgeTypes;
 

@@ -8,7 +8,7 @@ const initialState = {
   edges: [],
   caseOneRoutes: [],
   caseTwoRoutes: [],
-  activeTab: 'routes-tab',
+  activeTab: 'case-one-tab',
 };
 
 const store = createContext(initialState);

@@ -46,7 +46,7 @@ export const getAllRoutes = (routes, nodes, source, dest) => {
   path.push(source);
 
   function findAllPaths(v1, v2, visited, path, first = false, count) {
-    if (!first && v1 == v2) {
+    if (!first && v1 === v2) {
       console.log(`${path} with Count: ${count}`);
       const pathString = path.join();
       allRoutes.push(pathString);

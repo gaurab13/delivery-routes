@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { store } from '../../Context';
 import { getAllRoutes } from '../../Utils';
 import './index.scss';
+import {DEFAULT_MAX_STOPS} from '../../Constants';
 
 const CaseTwo = () => {
   const { state, dispatch } = useContext(store);
@@ -9,11 +10,10 @@ const CaseTwo = () => {
 
   const [sourceInput, setSourceInput] = useState('');
   const [destInput, setDestInput] = useState('');
-  const [maxStops, setMaxStops] = useState(5);
+  const [maxStops, setMaxStops] = useState(DEFAULT_MAX_STOPS);
   const [routesCount, setRoutesCount] = useState(0);
 
   const getValidRoutes = (routes) => {
-    console.log(maxStops);
     if (!maxStops || maxStops === '0') {
       return routes;
     }
@@ -37,17 +37,20 @@ const CaseTwo = () => {
     setRoutesCount(validRoutes.length);
   };
 
-  const handleClick = () => {
+  useEffect(() => {
     if (sourceInput.length === 1 && destInput.length === 1) {
       findAllRoutes();
+    } else {
+      dispatch({ type: 'UPDATE_CASE2_ROUTES', payload: [] });
+      setRoutesCount(0);
     }
-  };
+  }, [sourceInput, destInput, maxStops]);
 
   return (
     <div className="case-two-container mt-4">
       <div className="case-info">
         <h5>Number of Delivery Routes</h5>
-        <p>Number of possible delivery routes between given source and destination towns with given condition.</p>
+        <p>Source and Destination are towns represented by single english uppercase alphabets.</p>
       </div>
       <div className="d-flex">
         <div className="form-group mr-2">
@@ -58,6 +61,7 @@ const CaseTwo = () => {
             id="sourceInput"
             onChange={(evt) => setSourceInput(evt.target.value)}
             value={sourceInput}
+            autoComplete={"off"}
           />
         </div>
         <div className="form-group">
@@ -68,6 +72,7 @@ const CaseTwo = () => {
             id="destInput"
             onChange={(evt) => setDestInput(evt.target.value)}
             value={destInput}
+            autoComplete={"off"}
           />
         </div>
       </div>
@@ -85,9 +90,6 @@ const CaseTwo = () => {
         <div>Number of Delivery Routes</div>
         <div className="d-flex justify-content-between">
           <div className="routes-count-output">{routesCount}</div>
-          <button className="btn btn-primary" onClick={handleClick}>
-            Find
-          </button>
         </div>
       </div>
     </div>
