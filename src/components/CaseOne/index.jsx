@@ -51,8 +51,12 @@ const CaseOne = () => {
   return (
     <div className="case-one-container mt-4">
       <div className="d-flex flex-column">
+        <div className="case-info">
+          <h5>Delivery Cost</h5>
+          <p>Delivery cost for a route is the sum of cost of all individual paths within that route.</p>
+        </div>
         <div className="form-group mr-2">
-          <label htmlFor="routeInput">Delivery Route</label>
+          <label htmlFor="routeInput">Enter Delivery Route</label>
           <input
             type="text"
             className="form-control"

@@ -45,6 +45,10 @@ const CaseTwo = () => {
 
   return (
     <div className="case-two-container mt-4">
+      <div className="case-info">
+        <h5>Number of Delivery Routes</h5>
+        <p>Number of possible delivery routes between given source and destination towns with given condition.</p>
+      </div>
       <div className="d-flex">
         <div className="form-group mr-2">
           <label htmlFor="sourceInput">Source</label>
