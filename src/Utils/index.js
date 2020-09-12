@@ -39,7 +39,6 @@ export const getAllRoutes = (routes, nodes, source, dest) => {
     adjacencyList.get(route[0]).push({ dest: route[1], weight });
   });
 
-  console.log('AdjacencyList', adjacencyList);
   var allRoutes = [];
   var visited = new Set();
   var path = [];

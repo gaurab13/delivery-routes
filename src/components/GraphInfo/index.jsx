@@ -10,7 +10,7 @@ const GraphInfo = () => (
     </p>
     <p>
       Towns are represented with first letters of the alphabet. Route between two Towns{' '}
-      <span className="font-weight-bold">A</span> and <span className="font-weight-bold">B</span>
+      <span className="font-weight-bold">A</span> and <span className="font-weight-bold">B </span>
       with the delivery cost 1 is represented as <span className="font-weight-bold">AB1</span>
     </p>
     <p>Note: You can grab a node and adjust its position by moving it around in the graph.</p>
