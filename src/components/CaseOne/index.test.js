@@ -7,10 +7,14 @@ test('Component elements', () => {
   render(
     <StateProvider>
       <CaseOne />
-    </StateProvider>
+    </StateProvider>,
   );
-  expect(screen.getByRole('heading', {name: /Delivery Cost/i})).toBeInTheDocument();
-  expect(screen.getByText(/Delivery cost for a route is the sum of cost of all individual paths within that route./)).toBeInTheDocument();
+  expect(screen.getByRole('heading', { name: /Delivery Cost/i })).toBeInTheDocument();
+  expect(
+    screen.getByText(
+      /Delivery cost for a route is the sum of cost of all individual paths within that route./,
+    ),
+  ).toBeInTheDocument();
   expect(screen.getByLabelText(/Enter Delivery Route/)).toBeInTheDocument();
   expect(screen.getByRole('output').textContent).toBe('-');
 });
@@ -21,38 +25,38 @@ test('Component Events', () => {
     nodes: [
       {
         id: 'node1',
-        title: 'A'
+        title: 'A',
       },
       {
         id: 'node2',
-        title: 'B'
+        title: 'B',
       },
       {
         id: 'node3',
-        title: 'C'
-      }
-    ]
+        title: 'C',
+      },
+    ],
   };
   const dispatch = jest.fn();
   render(
     <StateProvider testState={state} testDispatch={dispatch}>
       <CaseOne />
-    </StateProvider>
+    </StateProvider>,
   );
-  
+
   const routeInput = screen.getByLabelText(/Enter Delivery Route/);
 
-  fireEvent.change(routeInput, {target: {value: 'A-'}});
+  fireEvent.change(routeInput, { target: { value: 'A-' } });
   expect(dispatch).toHaveBeenCalledWith({ type: 'UPDATE_CASE1_ROUTES', payload: [] });
   expect(screen.getByRole('output').textContent).toBe('-');
   dispatch.mockReset();
 
-  fireEvent.change(routeInput, {target: {value: 'A-B-C'}});
+  fireEvent.change(routeInput, { target: { value: 'A-B-C' } });
   expect(dispatch).toHaveBeenCalledWith({ type: 'UPDATE_CASE1_ROUTES', payload: ['AB1', 'BC2'] });
   expect(screen.getByRole('output').textContent).toBe('3');
   dispatch.mockReset();
 
-  fireEvent.change(routeInput, {target: {value: 'B-A'}});
+  fireEvent.change(routeInput, { target: { value: 'B-A' } });
   // expect(dispatch).toHaveBeenCalledWith({ type: 'UPDATE_CASE1_ROUTES', payload: ['AB1'] });
   expect(screen.getByRole('output').textContent).toBe('No Such Routes');
   dispatch.mockReset();

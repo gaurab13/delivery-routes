@@ -71,7 +71,9 @@ const CaseOne = () => {
         </div>
         <div className="d-flex flex-column">
           <div>Delivery Cost</div>
-          <div role="output" className="delivery-cost-output">{getDeliveryCostOutput()}</div>
+          <div role="output" className="delivery-cost-output">
+            {getDeliveryCostOutput()}
+          </div>
         </div>
       </div>
     </div>

@@ -7,11 +7,11 @@ test('Component elements', () => {
   render(
     <StateProvider>
       <Tabs />
-    </StateProvider>
+    </StateProvider>,
   );
-  expect(screen.getByRole('button', {name: /Routes/i})).toBeInTheDocument();
-  expect(screen.getByRole('button', {name: /Case 1/i})).toBeInTheDocument();
-  expect(screen.getByRole('button', {name: /Case 2/i})).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /Routes/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /Case 1/i })).toBeInTheDocument();
+  expect(screen.getByRole('button', { name: /Case 2/i })).toBeInTheDocument();
 });
 
 test('Component events', () => {
@@ -19,12 +19,12 @@ test('Component events', () => {
   render(
     <StateProvider testDispatch={dispatch}>
       <Tabs />
-    </StateProvider>
+    </StateProvider>,
   );
 
-  const RoutesBtn = screen.getByRole('button', {name: /Routes/i});
-  const Case1Btn = screen.getByRole('button', {name: /Case 1/i});
-  const Case2Btn = screen.getByRole('button', {name: /Case 2/i});
+  const RoutesBtn = screen.getByRole('button', { name: /Routes/i });
+  const Case1Btn = screen.getByRole('button', { name: /Case 1/i });
+  const Case2Btn = screen.getByRole('button', { name: /Case 2/i });
 
   dispatch.mockReset();
   fireEvent.click(RoutesBtn);
