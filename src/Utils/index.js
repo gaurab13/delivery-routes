@@ -1,4 +1,5 @@
 import uuid from 'react-uuid';
+import { DEFAULT_POSITIONS } from '../Constants';
 
 export const addRouteToNodesArray = (nodesArray, route) => {
   const source = route[0];
@@ -7,13 +8,24 @@ export const addRouteToNodesArray = (nodesArray, route) => {
     if (nodesArray.findIndex((node) => node.title === town) < 0) {
       const nodeIndex = nodesArray.length;
       const lastNode = nodesArray[nodesArray.length - 1];
-      nodesArray.push({
-        id: uuid(),
-        title: town,
-        x: lastNode ? (nodeIndex % 2 === 1 ? lastNode.x + 100 : lastNode.x) : 0,
-        y: lastNode ? (nodeIndex % 2 === 0 ? lastNode.y + 100 : lastNode.y) : 0,
-        type: 'empty',
-      });
+      const defaultPosition = DEFAULT_POSITIONS[nodeIndex];
+      if (defaultPosition) {
+        nodesArray.push({
+          id: uuid(),
+          title: town,
+          x: defaultPosition.x,
+          y: defaultPosition.y,
+          type: 'empty',
+        });
+      } else {
+        nodesArray.push({
+          id: uuid(),
+          title: town,
+          x: nodeIndex % 2 === 1 ? lastNode.x + 100 : lastNode.x,
+          y: nodeIndex % 2 === 0 ? lastNode.y + 100 : lastNode.y,
+          type: 'empty',
+        });
+      }
     }
   });
 };

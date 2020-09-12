@@ -1,8 +1,9 @@
 import React, { createContext, useReducer } from 'react';
 import { addRouteToNodesArray } from '../Utils';
+import { DEFAULT_ROUTES } from '../Constants';
 
 const initialState = {
-  routes: ['AB1', 'AC4', 'AD10', 'BE3', 'CD4', 'CF2', 'DE1', 'EB3', 'EA2', 'FD1'],
+  routes: DEFAULT_ROUTES,
   nodes: [],
   edges: [],
   caseOneRoutes: [],
