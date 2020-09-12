@@ -49,7 +49,7 @@ const CaseOne = () => {
   };
 
   return (
-    <div className="case-one-container">
+    <div className="case-one-container mt-4">
       <div className="d-flex flex-column">
         <div className="form-group mr-2">
           <label htmlFor="routeInput">Delivery Route</label>

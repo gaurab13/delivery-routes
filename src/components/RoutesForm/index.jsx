@@ -1,8 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { store } from '../../Context';
+import './index.scss';
 
 const RouteForm = () => {
-  const { dispatch } = useContext(store);
+  const { state, dispatch } = useContext(store);
+  const routes = state.routes;
   const [routeInput, setRouteInput] = useState('');
 
   const handleChange = (evt) => {
@@ -13,7 +15,13 @@ const RouteForm = () => {
     dispatch({ type: 'ADD_SINGLE_NODE', payload: routeInput });
   };
   return (
-    <div>
+    <div className="mt-4">
+      <div className="routes-info">
+        <h5>Current Routes</h5>
+        <div className="current-routes">
+          <p>{routes.join(', ')}</p>
+        </div>
+      </div>
       <div className="form-group">
         <label htmlFor="route-input">New Route</label>
         <input

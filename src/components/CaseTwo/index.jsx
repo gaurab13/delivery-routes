@@ -44,7 +44,7 @@ const CaseTwo = () => {
   };
 
   return (
-    <div className="case-two-container">
+    <div className="case-two-container mt-4">
       <div className="d-flex">
         <div className="form-group mr-2">
           <label htmlFor="sourceInput">Source</label>

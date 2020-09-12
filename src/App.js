@@ -6,14 +6,14 @@ import Tabs from './Components/Tabs';
 
 function App() {
   return (
-    <div className="app-container container-fluid">
+    <div className="app-container p-1">
       <div className="d-flex">
-        <div className="graph-container p-2">
-          <Graph />
-        </div>
         <div className="tabs-container p-2">
           <GraphInfo />
           <Tabs />
+        </div>
+        <div className="graph-container p-2">
+          <Graph />
         </div>
       </div>
     </div>
