@@ -7,7 +7,7 @@ import CaseTwo from '../CaseTwo';
 
 const Tabs = () => {
   const { state, dispatch } = useContext(store);
-  const activeTab = state.activeTab;
+  const { activeTab } = state;
 
   return (
     <div className="tabs">

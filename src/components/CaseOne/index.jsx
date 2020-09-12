@@ -10,7 +10,7 @@ const CaseOne = () => {
   const [deliveryCost, setDeliveryCost] = useState(0);
 
   useEffect(() => {
-    if (/^(A-B)(-[A-Z])*$/.test(routeInput)) {
+    if (/^([A-Z])(\-[A-Z])+$/.test(routeInput)) {
       calculateCost();
     } else {
       dispatch({ type: 'UPDATE_CASE1_ROUTES', payload: [] });
@@ -71,7 +71,7 @@ const CaseOne = () => {
         </div>
         <div className="d-flex flex-column">
           <div>Delivery Cost</div>
-          <div className="delivery-cost-output">{getDeliveryCostOutput()}</div>
+          <div role="output" className="delivery-cost-output">{getDeliveryCostOutput()}</div>
         </div>
       </div>
     </div>

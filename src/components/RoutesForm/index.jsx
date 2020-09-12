@@ -18,7 +18,7 @@ const RouteForm = () => {
   };
 
   const handleClick = () => {
-    if (/^([A-Z][A-Z])\d$/.test(routeInput) && routeInput[0] !== routeInput[1] && !routeExists()) {
+    if (/^([A-Z][A-Z])\d+$/.test(routeInput) && routeInput[0] !== routeInput[1] && !routeExists()) {
       dispatch({ type: 'ADD_SINGLE_NODE', payload: routeInput });
       setRouteInput('');
     } else {

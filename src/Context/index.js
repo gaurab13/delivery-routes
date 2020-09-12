@@ -14,8 +14,8 @@ const initialState = {
 const store = createContext(initialState);
 const { Provider } = store;
 
-const StateProvider = ({ children }) => {
-  const [state, dispatch] = useReducer((state, action) => {
+const StateProvider = ({ children, testDispatch, testState }) => {
+  const [iState, iDispatch] = useReducer((state, action) => {
     const { type, payload } = action;
     switch (type) {
       case 'UPDATE_NODES':
@@ -64,7 +64,8 @@ const StateProvider = ({ children }) => {
         return initialState;
     }
   }, initialState);
-
+  const dispatch = testDispatch ? testDispatch : iDispatch;
+  const state = testState ? testState : iState;
   return <Provider value={{ state, dispatch }}>{children}</Provider>;
 };
 

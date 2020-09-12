@@ -17,7 +17,7 @@ const CaseTwo = () => {
     if (!maxStops || maxStops === '0') {
       return routes;
     }
-    return routes.filter((route) => route.length <= maxStops);
+    return routes.filter((route) => route.length <= Number(maxStops));
   };
 
   const findAllRoutes = () => {
@@ -49,7 +49,7 @@ const CaseTwo = () => {
   return (
     <div className="case-two-container mt-4">
       <div className="case-info">
-        <h5>Number of Delivery Routes</h5>
+        <h5>Delivery Routes</h5>
         <p>Source and Destination are towns represented by single english uppercase alphabets.</p>
       </div>
       <div className="d-flex">
@@ -88,7 +88,7 @@ const CaseTwo = () => {
       </div>
       <div className="d-flex flex-column">
         <div>Number of Delivery Routes</div>
-        <div className="d-flex justify-content-between">
+        <div className="d-flex justify-content-between" role="output">
           <div className="routes-count-output">{routesCount}</div>
         </div>
       </div>
